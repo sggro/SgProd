@@ -1,0 +1,27 @@
+{
+  "name": "sg/prod-configurator",
+  "description": "Configurator Framework",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "version": "0.0.1",
+  "authors": [
+        {
+            "name": "Stephan Gröli"
+        }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Sg\\ProdConfigurator\\": "src/"
+    }
+  },
+  "require": {
+        "shopware/core" : "~6.2"
+  },
+  "extra": {
+    "shopware-plugin-class": "Sg\\ProdConfigurator\\SgProdConfigurator",
+    "label": {
+      "de-DE": "Product Configurator",
+      "en-GB": "Product Configurator"
+    }
+  }
+}
