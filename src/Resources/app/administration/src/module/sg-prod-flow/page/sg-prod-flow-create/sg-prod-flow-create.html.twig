@@ -1,0 +1,90 @@
+{% block sg_prod_flow_detail %}
+    <sw-page class="sg-prod-flow-detail">
+        <template slot="smart-bar-header">
+            <h2>Create new Flow here</h2>
+        </template>
+        <template slot="smart-bar-actions">
+
+                <sw-button
+                    :routerLink="{ name: 'sg.prod.flow.index' }">
+                    Abbrechen
+                </sw-button>
+
+                <sw-button-process
+                    class="sw-property-detail__save-action"
+                    :isLoading="isLoading"
+                    :processSuccess="isSaveSuccessful"
+                    :disabled="isLoading"
+                    @process-finish="saveFinish"
+                    variant="primary"
+                    @click.prevent="onSave">
+                    Save
+                </sw-button-process>
+
+        </template>
+        <template #content>
+            <sw-card-view slot="content">
+                <sw-card v-if="flow" title="Basic Information">
+                    <sw-text-field
+                        label="Name"
+                        placeholder="Put the name here"
+                        v-model="flow.name">
+                    </sw-text-field>
+                </sw-card>
+                <sw-card title="Step">
+                    <sw-container columns="1fr 1fr">
+                        <sw-card-section divider="right">
+                            From Step:
+                                {#<sw-entity-single-select
+                                    entity="sg_prod_configuration"
+                                    placeholder="Select From Step">
+                                </sw-entity-single-select>#}
+                        </sw-card-section>
+                        <sw-card-section>
+                            To Step:
+                            {#<sw-entity-single-select
+                                entity="sg_prod_configuration"
+                                placeholder="Select To Step">
+                            </sw-entity-single-select>#}
+                        </sw-card-section>
+                    </sw-container>
+                    <sw-container columns="1fr 1fr">
+                        <sw-card-section divider="right">
+                        </sw-card-section>
+                        <sw-card-section>
+                            <sw-button
+                                variant="primary"
+                                @click="onAddStep">
+                                Add to Flow
+                            </sw-button>
+                        </sw-card-section>
+                    </sw-container>
+                </sw-card>
+                <sw-card title="Flow Config">
+                    <div style="height: 500px; position: relative">
+                        <div v-for="(stepNode, index) in stepNodes"
+                            :key="stepNode.id"
+                            class="stepNode"
+                            :style="stepNodePosition(stepNode, index)">
+                            <div class="stepNode-label">{{ stepNode.label }}</div>
+                            <button  @click="onAddStep(stepNode)">
+                                <sw-icon name="default-basic-plus-circle" size="24"></sw-icon>
+                            </button>
+                        </div>
+{#                        <div v-for="stepNodeRelation in stepNodeRelations" class="stepNodeRelation" :style="stepNodeRelationPosition(stepNodeRelation)"></div>#}
+                    </div>
+
+                    {#<span v-for="step in steps" :key="step.id">
+                        {{ step.label }}
+                    </span>#}
+
+                    {#<WorkflowChart :transitions=[]
+                                :states="states"
+                                @state-click="onStateClick($event)" />#}
+                </sw-card>
+
+            </sw-card-view>
+        </template>
+
+    </sw-page>
+{% endblock %}

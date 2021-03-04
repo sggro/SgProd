@@ -1,0 +1,55 @@
+import template from './sg-prod-flow-index.html.twig';
+
+const { Component, Data, Context } = Shopware;
+const { Criteria } = Data;
+
+Component.register('sg-prod-flow-index', {
+   template,
+
+    inject: [
+        'repositoryFactory'
+    ],
+
+    data() {
+       return {
+           flows: null,
+           repository: null
+       }
+    },
+
+    created() {
+       this.createdComponent();
+    },
+
+    computed: {
+        columns() {
+            return [{
+                property: 'name',
+                dataIndex: 'name',
+                label: 'Name',
+                routerLink: 'sg.prod.flow.detail',
+                inlineEdit: 'string',
+                allowResize: true,
+                primary: true
+            }, {
+                property: 'createdAt',
+                dataIndex: 'createdAt',
+                label: 'Created At',
+                allowResize: true
+            }];
+        }
+    },
+
+    methods: {
+      createdComponent() {
+          this.repository = this.repositoryFactory.create('sg_prod_flow');
+
+          this.repository
+              .search(new Criteria(), Context.api)
+              .then((result) => {
+                  this.flows = result;
+              });
+
+      },
+    }
+});
