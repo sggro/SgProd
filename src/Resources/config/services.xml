@@ -14,11 +14,11 @@
         </service>
 
         <service id="Sg\ProdConfigurator\DAL\Step\StepDefinition">
-            <tag name="shopware.entity.definition" entity="sg_step"/>
+            <tag name="shopware.entity.definition" entity="sg_prod_step"/>
         </service>
 
         <service id="Sg\ProdConfigurator\DAL\Step\Aggregate\StepTypeDefinition">
-            <tag name="shopware.entity.definition" entity="sg_step_type"/>
+            <tag name="shopware.entity.definition" entity="sg_prod_step_type"/>
         </service>
 
         <service id="Sg\ProdConfigurator\DAL\Configuration\Extension\ProductExtension">

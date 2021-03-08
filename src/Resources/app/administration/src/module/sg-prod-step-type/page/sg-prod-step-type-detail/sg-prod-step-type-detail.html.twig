@@ -1,0 +1,46 @@
+{% block sg_prod_step_type_detail %}
+    <sw-page class="sg-prod-step-type-detail">
+        <template slot="smart-bar-header">
+            <h2>Create new Step Type</h2>
+        </template>
+        <template slot="smart-bar-actions">
+
+            <sw-button
+                :routerLink="{ name: 'sg.prod.step.type.index' }">
+                Abbrechen
+            </sw-button>
+
+            <sw-button-process
+                :isLoading="isLoading"
+                :processSuccess="isSaveSuccessful"
+                :disabled="isLoading"
+                @process-finish="saveFinish"
+                variant="primary"
+                @click.prevent="onSave">
+                Save
+            </sw-button-process>
+
+        </template>
+        <template #content>
+            <sw-card-view slot="content" v-if="stepType">
+                <sw-card title="Basic Information">
+                    <sw-text-field
+                        label="Technical Name"
+                        placeholder="Put the technical name here"
+                        v-model="stepType.technicalName">
+                    </sw-text-field>
+                    <sw-text-field
+                        label="Label"
+                        placeholder="Put the label here"
+                        v-model="stepType.label">
+                    </sw-text-field>
+                    <sw-text-field
+                        label="Template"
+                        placeholder="Put the template here"
+                        v-model="stepType.template">
+                    </sw-text-field>
+                </sw-card>
+            </sw-card-view>
+        </template>
+    </sw-page>
+{% endblock %}
