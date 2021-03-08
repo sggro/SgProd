@@ -19,8 +19,10 @@ class SgProdConfigurator extends Plugin
         $connection = $this->container->get(Connection::class);
         $connection->executeUpdate('DROP TABLE IF EXISTS `sg_prod_configuration`');
         $connection->executeUpdate('DROP TABLE IF EXISTS `sg_prod_flow`');
-
         //$connection->executeUpdate('ALTER TABLE `product` ADD COLUMN `sg_prod_configuration_id`');
+
+        $connection->executeUpdate('DROP TABLE IF EXISTS `sg_step`');
+        $connection->executeUpdate('DROP TABLE IF EXISTS `sg_step_type`');
 
     }
 

@@ -4,6 +4,7 @@ namespace Sg\ProdConfigurator\DAL\Step;
 
 use Sg\ProdConfigurator\DAL\Step\Aggregate\StepTypeDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Inherited;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\LongTextField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
@@ -26,6 +27,7 @@ class StepDefinition extends EntityDefinition
     {
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new PrimaryKey(), new Required()),
+            new FkField('step_type_id', 'stepTypeId', StepTypeDefinition::class),
             (new StringField('technical_name', 'technicalName'))->addFlags(new Required()),
             (new StringField('label', 'label'))->addFlags(new Required()),
             new LongTextField('description', 'description'),

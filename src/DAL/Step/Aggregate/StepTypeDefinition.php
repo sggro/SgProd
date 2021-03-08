@@ -27,6 +27,7 @@ class StepTypeDefinition extends EntityDefinition
             (new IdField('id', 'id'))->addFlags(new PrimaryKey(), new Required()),
             (new StringField('technical_name', 'technicalName'))->addFlags(new Required()),
             (new StringField('label', 'label'))->addFlags(new Required()),
+            (new StringField('template', 'template'))->addFlags(new Required()),
             (new OneToManyAssociationField('steps', StepDefinition::class, 'step_type_id', 'id'))
                 ->addFlags(new ReverseInherited('stepType'))
         ]);
