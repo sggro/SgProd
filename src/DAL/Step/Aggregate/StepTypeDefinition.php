@@ -14,7 +14,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 
 class StepTypeDefinition extends EntityDefinition
 {
-    public const ENTITY_NAME = 'sg_step_type';
+    public const ENTITY_NAME = 'sg_prod_step_type';
 
     public function getEntityName(): string
     {

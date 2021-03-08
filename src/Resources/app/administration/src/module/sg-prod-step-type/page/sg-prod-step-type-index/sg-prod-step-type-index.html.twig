@@ -1,0 +1,21 @@
+{% block sg_prod_step_type_index %}
+    <sw-page class="sg-prod-step-type-index">
+        <template slot="smart-bar-actions">
+{#            <sw-button#}
+{#                variant="primary"#}
+{#                :routerLink="{ name: 'sg.prod.step.type.create' }">#}
+{#                Create new Flow here#}
+{#            </sw-button>#}
+        </template>
+        <template #content>
+            <sw-entity-listing
+                v-if="stepTypes"
+                :items="stepTypes"
+                :repository="repository"
+                :showSelection="false"
+                :columns="columns">
+{#                detailRoute="sg.prod.step.type.detail">#}
+            </sw-entity-listing>
+        </template>
+    </sw-page>
+{% endblock %}
