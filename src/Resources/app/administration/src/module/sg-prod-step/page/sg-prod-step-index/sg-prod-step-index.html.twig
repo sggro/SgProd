@@ -1,0 +1,21 @@
+{% block sg_prod_step_index %}
+    <sw-page class="sg-prod-step-index">
+        <template slot="smart-bar-actions">
+            <sw-button
+                variant="primary"
+                :routerLink="{ name: 'sg.prod.step.create' }">
+                Create new Step
+            </sw-button>
+        </template>
+        <template #content>
+            <sw-entity-listing
+                v-if="steps"
+                :items="steps"
+                :repository="repository"
+                :showSelection="false"
+                :columns="columns"
+                detailRoute="sg.prod.step.detail">
+            </sw-entity-listing>
+        </template>
+    </sw-page>
+{% endblock %}
