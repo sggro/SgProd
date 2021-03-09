@@ -1,8 +1,8 @@
 const { Module } = Shopware;
 
 import './page/sg-prod-step-index';
-// import './page/sg-prod-step-detail';
-// import './page/sg-prod-step-create';
+import './page/sg-prod-step-detail';
+import './page/sg-prod-step-create';
 
 Module.register('sg-prod-step', {
     type: 'plugin',
@@ -16,20 +16,20 @@ Module.register('sg-prod-step', {
             component: 'sg-prod-step-index',
             path: 'index'
         },
-        // detail: {
-        //     component: 'sg-prod-step-detail',
-        //     path: 'detail/:id',
-        //     meta: {
-        //         parentPath: 'sg-prod-step-index'
-        //     }
-        // },
-        // create: {
-        //     component: 'sg-prod-step-create',
-        //     path: 'create',
-        //     meta: {
-        //         parentPath: 'sg-prod-step-index'
-        //     }
-        // }
+        detail: {
+            component: 'sg-prod-step-detail',
+            path: 'detail/:id',
+            meta: {
+                parentPath: 'sg-prod-step-index'
+            }
+        },
+        create: {
+            component: 'sg-prod-step-create',
+            path: 'create',
+            meta: {
+                parentPath: 'sg-prod-step-index'
+            }
+        }
     },
 
     navigation: [{

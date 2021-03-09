@@ -27,7 +27,7 @@ Component.register('sg-prod-step-index', {
                 property: 'technicalName',
                 dataIndex: 'technicalName',
                 label: 'Technical Name',
-                //routerLink: 'sg.prod.step.type.detail',
+                routerLink: 'sg.prod.step.detail',
                 inlineEdit: 'string',
                 allowResize: true,
                 primary: true
@@ -44,6 +44,12 @@ Component.register('sg-prod-step-index', {
                     dataIndex: 'description',
                     label: 'Description',
                     inlineEdit: 'string',
+                    allowResize: true
+                },
+                {
+                    property: 'stepType.label',
+                    dataIndex: 'stepType.label',
+                    label: 'Step Type',
                     allowResize: true
                 },
                 {
@@ -68,8 +74,11 @@ Component.register('sg-prod-step-index', {
         createdComponent() {
             this.repository = this.repositoryFactory.create('sg_prod_step');
 
+            const criteria = new Criteria();
+            criteria.addAssociation('stepType');
+
             this.repository
-                .search(new Criteria(), Context.api)
+                .search(criteria, Context.api)
                 .then((result) => {
                     this.steps = result;
                 });

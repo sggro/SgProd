@@ -1,0 +1,54 @@
+{% block sg_prod_step_detail %}
+    <sw-page class="sg-prod-step-detail">
+        <template slot="smart-bar-header">
+            <h2>Create new Step</h2>
+        </template>
+        <template slot="smart-bar-actions">
+
+            <sw-button
+                :routerLink="{ name: 'sg.prod.step.index' }">
+                Abbrechen
+            </sw-button>
+
+            <sw-button-process
+                :isLoading="isLoading"
+                :processSuccess="isSaveSuccessful"
+                :disabled="isLoading"
+                @process-finish="saveFinish"
+                variant="primary"
+                @click.prevent="onSave">
+                Save
+            </sw-button-process>
+
+        </template>
+        <template #content>
+            <sw-card-view slot="content" v-if="step">
+                <sw-card title="Basic Information">
+                    <sw-text-field
+                        label="Technical Name"
+                        placeholder="Put the technical name here"
+                        v-model="step.technicalName">
+                    </sw-text-field>
+                    <sw-text-field
+                        label="Label"
+                        placeholder="Put the label here"
+                        v-model="step.label">
+                    </sw-text-field>
+                    <sw-text-field
+                        label="Description"
+                        placeholder="Put the description here"
+                        v-model="step.description">
+                    </sw-text-field>
+                </sw-card>
+                <sw-card title="Type Assignment">
+                    <sw-entity-single-select
+                        entity="sg_prod_step_type"
+                        v-model="step.stepTypeId"
+                        labelProperty="label"
+                        placeholder="Assign the Step Type here">
+                    </sw-entity-single-select>
+                </sw-card>
+            </sw-card-view>
+        </template>
+    </sw-page>
+{% endblock %}

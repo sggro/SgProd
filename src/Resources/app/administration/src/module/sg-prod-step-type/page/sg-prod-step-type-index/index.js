@@ -27,7 +27,7 @@ Component.register('sg-prod-step-type-index', {
                 property: 'technicalName',
                 dataIndex: 'technicalName',
                 label: 'Technical Name',
-               // routerLink: 'sg.prod.step.type.detail',
+                routerLink: 'sg.prod.step.type.detail',
                 inlineEdit: 'string',
                 allowResize: true,
                 primary: true
