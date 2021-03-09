@@ -14,7 +14,7 @@ class Migration1614932386AddStepsAndStepTypes extends MigrationStep
 
     public function update(Connection $connection): void
     {
-        $connection->executeUpdate('CREATE TABLE IF NOT EXISTS `sg_step_type` (
+        $connection->executeUpdate('CREATE TABLE IF NOT EXISTS `sg_prod_step_type` (
             `id` BINARY(16) NOT NULL,
             `technical_name` VARCHAR(255) NOT NULL,
             `label` VARCHAR(255) NOT NULL,
@@ -26,7 +26,7 @@ class Migration1614932386AddStepsAndStepTypes extends MigrationStep
           ');
 
         $connection->executeUpdate('
-            CREATE TABLE IF NOT EXISTS `sg_step` (
+            CREATE TABLE IF NOT EXISTS `sg_prod_step` (
                 `id` BINARY(16) NOT NULL,
                 `step_type_id` BINARY(16) NOT NULL,
                 `technical_name` VARCHAR(255) NOT NULL,
@@ -35,8 +35,8 @@ class Migration1614932386AddStepsAndStepTypes extends MigrationStep
                 `created_at` DATETIME(3) NOT NULL,
                 `updated_at` DATETIME(3) NULL,
                 PRIMARY KEY(`id`),
-                CONSTRAINT `fk.sg_step.step_type_id` FOREIGN KEY (`step_type_id`)
-                REFERENCES `sg_step_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                CONSTRAINT `fk.sg_prod_step.step_type_id` FOREIGN KEY (`step_type_id`)
+                REFERENCES `sg_prod_step_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
           ');
     }
